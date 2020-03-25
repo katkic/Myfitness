@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>ユーザー情報</h1>
+
+  <div class="content">
+    <div class="header-image">
+      <!-- header-imageを設定する -->
+    </div><!-- /.header-image -->
+
+    <div class="user-profile">
+      <p><%= @user.name %></p>
+      <p><%= @user.email %></p>
+    </div><!-- /.profile -->
+
+    <div class="user-message">
+    </div><!-- /.user-message -->
+
+    <div class="posts">
+    </div><!-- /.posts -->
+  </div><!-- /.content -->
+  <%= link_to 'サインアウト', destroy_user_session_path, class: 'btn btn-danger', method: :delete %>
+</div><!-- /.container -->

@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>ユーザー一覧</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ユーザーネーム</th>
+        <th>メールアドレス</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <% @users.each do |user| %>
+    <tbody>
+      <tr>
+        <td><%= link_to user.name, user_path(user) %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to '編集', edit_user_registration_path %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>
