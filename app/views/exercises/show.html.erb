@@ -1,0 +1,36 @@
+<div class="exercise-container col-6 mx-auto mt-3">
+<h1>トレーニング種目詳細</h1>
+  <div class="my-4">
+    <%= link_to '< 戻る', :back, class: 'btn btn-link' %>
+    <%= link_to '一覧', exercises_path, class: 'btn btn-link' %>
+    <%= link_to '編集 >', edit_exercise_path(@exercise), class: 'btn btn-link' %>
+  </div>
+
+  <% if @exercise.preset %>
+    <h4>プリセット</h4>
+  <% else %>
+    <h4>オリジナル</h4>
+  <% end %>
+
+  <div class="title-area mt-4 clearfix">
+    <p><%= image_tag '16765.png', alt: 'トレーニングアイコン', size: '100' %></p>
+    <h3><%= @exercise.name %></h3>
+  </div>
+
+  <div class="my-5">
+    <div class="exercise-part">
+      <h5><%= Exercise.human_attribute_name(:part) %></h5>
+      <p><%= @exercise.part_i18n %></p>
+    </div>
+
+    <div>
+      <h5><%= Exercise.human_attribute_name(:category) %></h5>
+      <p><%= @exercise.category_i18n %></p>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h5><%= Exercise.human_attribute_name(:description) %></h5>
+    <p><%= @exercise.description %></p>
+  </div>
+</div><!-- /.exercise-content -->

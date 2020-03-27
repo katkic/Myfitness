@@ -1,0 +1,29 @@
+ja:
+  activerecord:
+    models:
+      exercise: 種目
+    attributes:
+      exercise:
+        id: ID
+        name: 名称
+        part: 部位
+        category: カテゴリー
+        description: 説明
+  enums:
+    exercise:
+      part:
+        unanswered1: 選択してください
+        chest: 胸
+        leg: 脚
+        back: 背中
+        shoulder: 肩
+        arm: 腕
+        abdominals: 腹
+        other: その他
+      category:
+        unanswered2: 選択してください
+        free_weight: フリーウェイト
+        machine: マシン
+        own_weight: 自重
+        trunk: 体幹
+        aerobic: 有酸素

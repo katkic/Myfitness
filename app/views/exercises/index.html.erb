@@ -1,0 +1,17 @@
+<div class="col-7 mx-auto mt-3">
+  <h1>トレーニング種目一覧</h1>
+  <%= render 'partial/exercise_navbar' %>
+
+  <table class="table table-hover">
+    <% @exercises.each do |exercise| %>
+      <tbody>
+        <tr>
+          <td><%= image_tag '16765.png', alt: 'トレーニングアイコン', size: '50' %></td>
+          <td class="align-middle"><%= link_to exercise.name, exercise_path(exercise) %></td>
+          <td class="align-middle"><%= exercise.part_i18n %></td>
+          <td class="align-middle"><%= link_to '追加', '#', class: 'btn btn-success text-white' %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div><!-- /.container -->

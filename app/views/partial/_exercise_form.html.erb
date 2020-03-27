@@ -1,0 +1,35 @@
+<%= form_with model: exercise, local: true do |f| %>
+    <% if exercise.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(exercise.errors.count, "") %> 件のエラーがあります</h2>
+
+        <ul>
+          <% exercise.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control', id: 'exercise_name' %>
+    </div><!-- /.form-group -->
+
+    <div class="form-group">
+      <%= f.label :part %><br>
+      <%= f.select :part, Exercise.parts_i18n.invert %>
+    </div><!-- /.form-group -->
+
+    <div class="form-group">
+      <%= f.label :category %><br>
+      <%= f.select :category, Exercise.categories_i18n.invert %>
+    </div><!-- /.form-group -->
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control', id: 'exercise_description' %>
+    </div><!-- /.form-group -->
+
+    <%= f.submit nil, class: 'btn btn-primary' %>
+  <% end %>

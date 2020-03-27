@@ -1,0 +1,10 @@
+<div class="col-6 mx-auto">
+  <div>
+    <h1>トレーニング種目作成</h1>
+    <div>
+    <%= link_to '< 戻る', :back, class: 'btn btn-link' %>
+    <%= link_to '一覧 >', exercises_path, class: 'btn btn-link' %>
+  </div>
+    <%= render 'partial/exercise_form', exercise: @exercise %>
+  </div>
+</div>
