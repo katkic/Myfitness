@@ -7,9 +7,18 @@
     margin-bottom: 20px;
     &_header {
       margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
       &_name {
         font-size: 20px;
         margin: 0;
+      }
+      &_action {
+        .fa-pen,
+        .fa-trash {
+          font-size: 18px;
+          color: #8c8c8c;
+        }
       }
     }
   }

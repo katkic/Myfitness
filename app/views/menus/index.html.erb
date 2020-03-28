@@ -15,8 +15,13 @@
           <h2 class="menu_header_name">
             <%= menu.name %>
           </h2><!-- /.list_header_title -->
-          <p>インターバル : <%= menu.interval %>日</p>
+
+          <div class="menu_header_action">
+            <%= link_to content_tag(:i, '', class: 'fas fa-pen'), edit_menu_path(menu) %>
+          </div>
         </div><!-- /.menu_header -->
+
+        <p>インターバル : <%= menu.interval %>日</p>
       </div><!-- /.menu -->
     <% end %><!-- /@menus.each do |menu| -->
   </div><!-- /.menuWrapper -->
