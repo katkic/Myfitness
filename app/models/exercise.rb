@@ -2,6 +2,9 @@ class Exercise < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
   validates :description, presence: true
 
+  has_many :menu_relationships, dependent: :destroy
+  has_many :menus, through: :menu_relationships, source: :menu
+
   enum part: {
     unanswered1: 0,
     chest:       1,

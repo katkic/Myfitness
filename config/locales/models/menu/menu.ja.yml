@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      menu: メニュー
+    attributes:
+      exercise:
+        id: ID
+        name: 名称
+        interval: インターバル日数

@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
 
   has_many :profiles, dependent: :destroy
+  has_many :menus, dependent: :destroy
 end
