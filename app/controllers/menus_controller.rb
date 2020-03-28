@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-  before_action :set_menu, only: %i[edit update]
+  before_action :set_menu, only: %i[edit update destroy]
 
   def index
     @menus = Menu.where(user: current_user)
@@ -30,6 +30,11 @@ class MenusController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @menu.destroy
+    redirect_to menus_path, notice: "メニュー「#{@menu.name}」を削除しました"
   end
 
   private

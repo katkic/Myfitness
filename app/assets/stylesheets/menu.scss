@@ -3,7 +3,7 @@
   .menu {
     background-color: #e2e4e6;
     padding: 10px;
-    min-width: 100px;
+    min-width: 300px;
     margin-bottom: 20px;
     &_header {
       margin-bottom: 20px;
@@ -14,10 +14,13 @@
         margin: 0;
       }
       &_action {
-        .fa-pen,
-        .fa-trash {
+        .fa-pen, .fa-trash {
           font-size: 18px;
-          color: #8c8c8c;
+          // color: #8c8c8c;
+          color: rgb(31, 31, 31);
+        }
+        .fa-trash {
+          margin-left: 10px;
         }
       }
     }

@@ -18,6 +18,7 @@
 
           <div class="menu_header_action">
             <%= link_to content_tag(:i, '', class: 'fas fa-pen'), edit_menu_path(menu) %>
+            <%= link_to content_tag(:i, '', class: 'fas fa-trash'), menu_path(menu), method: :delete, data: { confirm: "#{menu.name}を削除してよろしいですか？" } %>
           </div>
         </div><!-- /.menu_header -->
 
