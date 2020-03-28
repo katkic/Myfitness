@@ -1,0 +1,25 @@
+<%= form_with model: menu, local: true do |f| %>
+    <% if menu.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(menu.errors.count, "") %> 件のエラーがあります</h2>
+
+        <ul>
+          <% menu.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control', id: 'menu_name', autofocus: true %>
+    </div><!-- /.form-group -->
+
+    <div class="form-group">
+      <%= f.label :interval %>
+      <%= f.select :interval, [1, 2, 3, 4, 5], {include_brank: '選択してください'}, class: 'form-control', id: 'menu_interval' %>
+    </div><!-- /.form-group -->
+
+    <%= f.submit nil, class: 'btn btn-primary' %>
+  <% end %>

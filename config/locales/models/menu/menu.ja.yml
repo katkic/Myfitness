@@ -3,7 +3,7 @@ ja:
     models:
       menu: メニュー
     attributes:
-      exercise:
+      menu:
         id: ID
         name: 名称
         interval: インターバル日数
