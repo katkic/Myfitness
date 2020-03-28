@@ -1,0 +1,16 @@
+<div class="col-6 mx-auto">
+  <h1 class="my-3">トレーニングメニュー</h1>
+  <div class="menuWrapper">
+    <% @menus.each do |menu| %>
+      <div class="menu col-6">
+        <div class="menu_header">
+          <h2 class="menu_header_name"></h2>
+            <%= menu.name %>
+          </h2><!-- /.list_header_title -->
+        </div><!-- /.menu_header -->
+      </div><!-- /.menu -->
+    <% end %>
+    <p>トレーニングメニューを作成してください</p>
+    <%= link_to 'メニュー作成', '#', class: 'btn btn-primary text-white mt-3' %>
+  </div><!-- /.menuWrapper -->
+</div><!-- /.col-6 mx-auto -->

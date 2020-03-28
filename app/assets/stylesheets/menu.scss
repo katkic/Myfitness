@@ -1,0 +1,16 @@
+.menuWrapper {
+  height: 100%;
+  .menu {
+    background-color: #e2e4e6;
+    padding: 10px;
+    min-width: 100px;
+    margin-bottom: 20px;
+    &_header {
+      margin-bottom: 20px;
+      &_name {
+        font-size: 20px;
+        margin: 0;
+      }
+    }
+  }
+}
