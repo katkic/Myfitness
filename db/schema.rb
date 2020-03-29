@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2020_03_28_005917) do
   end
 
   create_table "menu_relationships", force: :cascade do |t|
-    t.bigint "menu_id"
-    t.bigint "exercise_id"
+    t.bigint "menu_id", null: false
+    t.bigint "exercise_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exercise_id"], name: "index_menu_relationships_on_exercise_id"

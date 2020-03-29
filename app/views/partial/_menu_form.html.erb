@@ -18,8 +18,26 @@
 
     <div class="form-group">
       <%= f.label :interval %>
-      <%= f.select :interval, [1, 2, 3, 4, 5], {include_brank: '選択してください'}, class: 'form-control', id: 'menu_interval' %>
+      <%= f.select :interval, [1, 2, 3, 4, 5], { include_brank: '選択してください' }, class: 'form-control', id: 'menu_interval' %>
     </div><!-- /.form-group -->
+
+    <table class="table table-hover">
+      <tbody>
+        <% Exercise.all.each do |exercise| %>
+          <tr>
+            <td>
+              <%= f.check_box :exercise_ids, {
+                multiple: true, checked: @menu.exercises.find_by(id: exercise.id).present?, include_hidden: false
+              }, exercise[:id] %>
+            </td>
+            <td><%= image_tag '16765.png', alt: 'トレーニングアイコン', size: '50' %></td>
+            <td><%= exercise.name %></td>
+            <td><%= exercise.part_i18n %></td>
+            <td><%= exercise.category_i18n %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
     <%= f.submit nil, class: 'btn btn-primary' %>
   <% end %>

@@ -13,7 +13,7 @@
       <div class="menu col-6">
         <div class="menu_header">
           <h2 class="menu_header_name">
-            <%= menu.name %>
+            <%= link_to menu.name, menu_path(menu) %>
           </h2><!-- /.list_header_title -->
 
           <div class="menu_header_action">
@@ -23,6 +23,12 @@
         </div><!-- /.menu_header -->
 
         <p>インターバル : <%= menu.interval %>日</p>
+
+        <% menu.exercises.each do |exercise| %>
+          <ul>
+            <li><%= link_to exercise.name, '#' %></li>
+          </ul>
+        <% end %>
       </div><!-- /.menu -->
     <% end %><!-- /@menus.each do |menu| -->
   </div><!-- /.menuWrapper -->

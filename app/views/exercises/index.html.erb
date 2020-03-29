@@ -9,7 +9,8 @@
           <td><%= image_tag '16765.png', alt: 'トレーニングアイコン', size: '50' %></td>
           <td class="align-middle"><%= link_to exercise.name, exercise_path(exercise) %></td>
           <td class="align-middle"><%= exercise.part_i18n %></td>
-          <td class="align-middle"><%= link_to '追加', '#', class: 'btn btn-success text-white' %></td>
+          <td class="align-middle"><%= exercise.category_i18n %></td>
+          <td class="align-middle"><%= link_to '編集', edit_exercise_path(exercise), class: 'btn btn-success text-white' %></td>
         </tr>
       </tbody>
     <% end %>

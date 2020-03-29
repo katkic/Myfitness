@@ -6,7 +6,7 @@
     min-width: 300px;
     margin-bottom: 20px;
     &_header {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
       &_name {
@@ -14,13 +14,15 @@
         margin: 0;
       }
       &_action {
-        .fa-pen, .fa-trash {
+        .fa-pen, .fa-trash, .fa-plus {
           font-size: 18px;
-          // color: #8c8c8c;
-          color: rgb(31, 31, 31);
+          color: #1f1f1f;
         }
         .fa-trash {
           margin-left: 10px;
+        }
+        .fa-plus {
+          margin-right: 10px;
         }
       }
     }

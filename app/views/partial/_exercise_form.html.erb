@@ -18,12 +18,12 @@
 
     <div class="form-group">
       <%= f.label :part %><br>
-      <%= f.select :part, Exercise.parts_i18n.invert %>
+      <%= f.select :part, Exercise.parts_i18n.invert, {}, class: 'form-control', id: 'exercise_part' %>
     </div><!-- /.form-group -->
 
     <div class="form-group">
       <%= f.label :category %><br>
-      <%= f.select :category, Exercise.categories_i18n.invert %>
+      <%= f.select :category, Exercise.categories_i18n.invert, {}, class: 'form-control', id: 'esercise_' %>
     </div><!-- /.form-group -->
 
     <div class="form-group">

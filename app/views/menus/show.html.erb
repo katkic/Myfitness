@@ -1,0 +1,18 @@
+<div class="col-6 mx-auto my-3">
+  <h1>メニュー情報</h1>
+
+  <div class="menu-content">
+    <div>
+      <p><%= @menu.name %></p>
+      <p>インターバル<%= @menu.interval %>日</p>
+    </div>
+
+    <div>
+      <ul>
+        <% @menu.exercises.each do |exersise| %>
+          <li><%= link_to exersise.name, '#' %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
