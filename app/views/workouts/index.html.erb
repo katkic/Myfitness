@@ -20,6 +20,7 @@
           <th>最大重量</th>
           <th>1RM(MAX)</th>
           <th>合計重量</th>
+          <th></th>
         </tr>
       </thead>
 
@@ -31,6 +32,7 @@
             <td>50<%#= workout.exercise_logs.weight %></td>
             <td>68.2<%#= workout.exercise_logs.weight %></td>
             <td>1575.0<%#= workout.exercise_logs.weight %></td>
+            <td><%= link_to '編集', edit_workout_path(workout) %></td>
           </tr>
         <% end %><!-- /@worktous.each do |menu| -->
     </tr>
