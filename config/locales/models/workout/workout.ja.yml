@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      workout: トレーニング
+    attributes:
+      workout:
+        id: ID
+        condition: コンディション
+        memo: メモ
+  enums:
+    workout:
+      condition:
+        very_good: 絶好調
+        good: 好調
+        nomal: 普通
+        bad: 不調
+        very_bad: 絶不調
