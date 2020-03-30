@@ -27,7 +27,7 @@
       <tbody>
         <% @workouts.each do |workout| %>
           <tr>
-            <td><%= link_to workout.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+            <td><%= link_to workout.created_at.strftime("%Y-%m-%d %H:%M"), workout_path(workout) %></td>
             <td><%= workout.exercise_logs.count %></td>
             <td>50<%#= workout.exercise_logs.weight %></td>
             <td>68.2<%#= workout.exercise_logs.weight %></td>

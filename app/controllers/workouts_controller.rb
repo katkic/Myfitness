@@ -1,12 +1,15 @@
 class WorkoutsController < ApplicationController
-  before_action :set_workout, only: %i[edit update]
+  before_action :set_workout, only: %i[show edit update]
 
   def index
     @workouts = Workout.where(exercise_id: params[:exercise_id]).order(created_at: :desc)
     @exercise = @workouts.first.exercise
   end
 
-  def show;end
+  def show
+    @exercise_logs = @workout.exercise_logs
+    get_exercise
+  end
 
   def new
     @exercise = Exercise.find(params[:exercise_id])
