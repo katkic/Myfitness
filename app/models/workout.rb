@@ -4,8 +4,13 @@ class Workout < ApplicationRecord
   has_many :exercises
   has_many :exercise_logs, dependent: :destroy
 
+  accepts_nested_attributes_for :exercise_logs,
+    reject_if: proc { |attributes|
+      attributes[:weight].blank? &&
+      attributes[:rep].blank?
+    }
+
   enum condition: {
-    unanswerd: 0,
     very_good: 1,
     good:      2,
     nomal:     3,

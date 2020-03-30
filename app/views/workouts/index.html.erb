@@ -5,9 +5,9 @@
 
   <nav class="navbar navbar-expand-sm my-3">
     <ul class="navbar-nav">
-      <li class="nav-item"><%= link_to '戻る', :back, class: 'nav-link btn btn-default' %></li>
+      <li class="nav-item"><%= link_to 'メニュー', menus_path, class: 'nav-link btn btn-default' %></li>
       <li class="nav-item"><%= link_to 'グラフ', '#', class: 'nav-link btn btn-default' %></li>
-      <li class="nav-item"><%= link_to '新規作成', new_workout_path, class: 'nav-link btn btn-primary text-white ml-5' %></li>
+      <li class="nav-item"><%= link_to '新規作成', new_workout_path(exercise_id: @exercise.id), class: 'nav-link btn btn-primary text-white ml-5' %></li>
     </ul>
   </nav>
 
@@ -25,13 +25,13 @@
 
       <tbody>
         <% @workouts.each do |workout| %>
-            <tr>
-              <td><%= link_to workout.created_at %></td>
-              <td>3<%#= workout.exercise_logs.cout %></td>
-              <td>52.5<%#= workout.exercise_logs.weight %></td>
-              <td>68.2<%#= workout.exercise_logs.weight %></td>
-              <td>1575.0<%#= workout.exercise_logs.weight %></td>
-            </tr>
+          <tr>
+            <td><%= link_to workout.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+            <td><%= workout.exercise_logs.count %></td>
+            <td>50<%#= workout.exercise_logs.weight %></td>
+            <td>68.2<%#= workout.exercise_logs.weight %></td>
+            <td>1575.0<%#= workout.exercise_logs.weight %></td>
+          </tr>
         <% end %><!-- /@worktous.each do |menu| -->
     </tr>
     </tbody>
