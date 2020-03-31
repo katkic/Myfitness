@@ -1,0 +1,39 @@
+.workoutWrapper {
+  height: 100%;
+
+  .workout {
+    background-color: #e2e4e6;
+    padding: 10px;
+    min-width: 300px;
+    margin-bottom: 20px;
+
+    &_header {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      &_name {
+        font-size: 20px;
+        margin: 0;
+      }
+
+      &_action {
+
+        .fa-pen,
+        .fa-trash,
+        .fa-plus {
+          font-size: 18px;
+          color: #1f1f1f;
+        }
+
+        .fa-trash {
+          margin-left: 10px;
+        }
+
+        .fa-plus {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

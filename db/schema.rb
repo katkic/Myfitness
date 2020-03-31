@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_28_005917) do
+ActiveRecord::Schema.define(version: 2020_03_29_141323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exercise_logs", force: :cascade do |t|
+    t.bigint "workout_id", null: false
+    t.integer "set", null: false
+    t.float "weight", null: false
+    t.integer "rep", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["workout_id"], name: "index_exercise_logs_on_workout_id"
+  end
 
   create_table "exercises", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -69,8 +79,22 @@ ActiveRecord::Schema.define(version: 2020_03_28_005917) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "workouts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "exercise_id"
+    t.integer "condition", default: 3, null: false
+    t.text "memo", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_workouts_on_exercise_id"
+    t.index ["user_id"], name: "index_workouts_on_user_id"
+  end
+
+  add_foreign_key "exercise_logs", "workouts"
   add_foreign_key "menu_relationships", "exercises"
   add_foreign_key "menu_relationships", "menus"
   add_foreign_key "menus", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "workouts", "exercises"
+  add_foreign_key "workouts", "users"
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  exercise: one
+  condition: 1
+  memo: MyText
+
+two:
+  user: two
+  exercise: two
+  condition: 1
+  memo: MyText
