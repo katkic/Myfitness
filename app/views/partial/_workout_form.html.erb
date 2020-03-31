@@ -41,7 +41,7 @@
           <%= f.fields_for :exercise_logs do |ef| %>
             <tr>
               <td><%= ef.index + 1  %></td>
-              <%= ef.hidden_field :set, value: ef.index + 1 %>
+                  <%= ef.hidden_field :set, value: ef.index + 1 %>
               <td><%= ef.number_field :weight, min: 0, max:500, step:0.1, class: 'py-2 m-2' %></td>
               <td><%= ef.number_field :rep, min: 0, max: 500, class: 'py-2 m-2' %></td>
             </tr>
