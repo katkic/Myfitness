@@ -13,7 +13,7 @@
   </nav>
 
   <div class="exercise_log_content">
-    <div class="form-group">
+    <div>
       <p>トレーニング日</p>
       <%= @workout.created_at.strftime("%Y-%m-%d %H:%M") %>
     </div>
@@ -38,14 +38,23 @@
       </tbody>
     </table>
 
-    <div class="form-group">
+    <div class="my-4">
       <p>コンディション</p>
       <p><%= @workout.condition_i18n %></p>
     </div><!-- /.form-group -->
 
-    <div class="form-group">
+    <div class="my-4">
       <p>メモ</p>
       <p><%= @workout.memo %></p>
-    </div><!-- /.form-group -->
+    </div>
+
+    <div>
+    <%= link_to '編集', edit_workout_path(@workout), class: 'btn btn-success text-white' %>
+    </div>
+
+    <div class="mt-4">
+      <%= link_to '削除', workout_path(@workout),
+        method: :delete, data: { confirm: '削除してもよろしいですか？'}, class: 'btn btn-danger text-white' %>
+    </div>
   </div>
 </div>

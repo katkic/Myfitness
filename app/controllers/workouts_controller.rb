@@ -1,9 +1,9 @@
 class WorkoutsController < ApplicationController
-  before_action :set_workout, only: %i[show edit update]
+  before_action :set_workout, only: %i[show edit update destroy]
 
   def index
+    @exercise = Exercise.find(params[:exercise_id])
     @workouts = Workout.where(exercise_id: params[:exercise_id]).order(created_at: :desc)
-    @exercise = @workouts.first.exercise
   end
 
   def show
@@ -22,7 +22,7 @@ class WorkoutsController < ApplicationController
     get_exercise
 
     if @workout.save
-      redirect_to workouts_path(exercise_id: @exercise.id), notice: "トレーニング「#{@exercise.name}」を記録しました"
+      redirect_to workouts_path(exercise_id: @exercise.id), notice: "トレーニング「#{@workout.created_at.strftime("%Y-%m-%d %H:%M")}」を記録しました"
     else
       render :new
     end
@@ -37,10 +37,16 @@ class WorkoutsController < ApplicationController
     get_exercise
 
     if @workout.update(workout_params)
-      redirect_to workout_path(@workout), notice: "トレーニング「#{@exercise.name}」を更新しました"
+      redirect_to workout_path(@workout), notice: "トレーニング「#{@workout.created_at.strftime("%Y-%m-%d %H:%M")}」を更新しました"
     else
       render :edit
     end
+  end
+
+  def destroy
+    @workout.destroy
+    get_exercise
+    redirect_to workouts_path(exercise_id: @workout.exercise.id), notice: "「トレーニング #{@workout.created_at.strftime("%Y-%m-%d %H:%M")}」を削除しました"
   end
 
   private
