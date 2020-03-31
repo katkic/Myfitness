@@ -22,7 +22,7 @@ class WorkoutsController < ApplicationController
     get_exercise
 
     if @workout.save
-      redirect_to workouts_path(exercise_id: @exercise.id), notice: "トレーニング「#{@workout.created_at.strftime("%Y-%m-%d %H:%M")}」を記録しました"
+      redirect_to workout_path(@workout), notice: "トレーニング「#{@workout.created_at.strftime("%Y-%m-%d %H:%M")}」を記録しました"
     else
       render :new
     end
