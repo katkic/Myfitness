@@ -27,9 +27,9 @@
           <%= f.fields_for :exercise_logs, @workout.exercise_logs.sort_by(&:set) do |ef| %>
             <li class="exercise-set"></span></li>
             <li><%= ef.hidden_field :set, class: 'exercise-set-hidden' %></li>
-            <li><%= ef.number_field :weight, min: 0, max:300, class: 'py-2 exercise-input' %></li>
-            <li><%= ef.number_field :rep, min: 0, max: 300, class: 'py-2 exercise-input' %></li>
-            <li><%= ef.link_to_remove '削除' %></li>
+            <li><%= ef.number_field :weight, min: 1, max:300, class: 'py-2 exercise-input weight' %></li>
+            <li><%= ef.number_field :rep, min: 1, max: 300, class: 'py-2 exercise-input rep' %></li>
+            <li class="remove-link"><%= ef.link_to_remove '削除' %></li>
           <% end %>
 
           <%= f.link_to_add '追加', :exercise_logs, data: { limit: 10 }, class: 'btn btn-success btn-sm text-white add-btn' %>
@@ -49,7 +49,7 @@
 
       <div class="form-group text-right">
         <%= f.hidden_field :exercise_id, value: @exercise.id %>
-        <%= f.submit class: 'btn btn-primary' %>
+        <%= f.submit class: 'btn btn-primary', id: 'workout-submit-btn' %>
       </div><!-- /.form-group -->
     </div><!-- /.form-area -->
   <% end %>

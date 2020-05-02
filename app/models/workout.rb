@@ -3,10 +3,7 @@ class Workout < ApplicationRecord
   belongs_to :exercise
   has_many :exercise_logs, dependent: :destroy
 
-  accepts_nested_attributes_for :exercise_logs, allow_destroy: true,
-    reject_if: proc { |attributes|
-      attributes[:weight].blank? && attributes[:rep].blank?
-    }
+  accepts_nested_attributes_for :exercise_logs, allow_destroy: true
 
   enum condition: {
     very_good: 1,
