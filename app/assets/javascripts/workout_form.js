@@ -25,31 +25,16 @@ $(document).on('turbolinks:load', function () {
     getVisibleFields().each(function (index) {
       const weight = $(this).find('.weight').val();
       const rep = $(this).find('.rep').val();
-      // console.log('weight: ' + weight);
-      // console.log('rep: ' + rep)
 
-      if (weight && rep) {
-        flagArray.push(true);
-        // console.log('true');
-        // console.log(flagArray);
-      } else {
-        flagArray.push(false);
-        // console.log('false');
-        // console.log(flagArray);
-      }
+      weight && rep ? flagArray.push(true) : flagArray.push(false);
 
       // weight, repが共に入力されているfieldがあるか判定し、submitの有効、無効の切り替え
-      if (flagArray.includes(true)) {
-        submitBtn.prop('disabled', false);
-      } else {
-        submitBtn.prop('disabled', true);
-      }
+      flagArray.includes(true) ? submitBtn.prop('disabled', false) : submitBtn.prop('disabled', true);
     });
   }
 
   // 新規作成と編集でsubmitの初期状態を切り替え
   const submitBtn = $('#workout-submit-btn');
-  // console.log(submitBtn.val());
   submitBtn.val() === '登録する' ? submitBtn.prop('disabled', true) : submitBtn.prop('disabled', false)
 
   // ページ表示時にset数を表示する
