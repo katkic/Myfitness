@@ -14,11 +14,11 @@
   <div class="post-main-content">
     <div class="form-group">
       <div class="time-area">
-        <%= Time.new.strftime('%Y-%m-%d %H:%M') %>
+        <%= format_date_time(@post.created_at) %>
       </div><!-- /.time-area -->
 
       <div class="content-header">
-        <p><%= image_tag set_image(@post.user.profile.icon, :default_user_icon), alt: current_user.name, class: 'cover50' %></p>
+        <p><%= image_tag set_image(@post.user.profile.icon, 'default_user_icon.png'), alt: current_user.name, class: 'cover50' %></p>
         <div class="post-names">
           <p class="post-user"><%= current_user.name %></p>
         </div><!-- /.post-names -->
@@ -31,7 +31,7 @@
   <div class="form-group post-picture-content mb-4">
     <i class="far fa-image fa-lg"></i>
     <%= f.label :picture %><br>
-    <p class="mb-2"><%= image_tag set_image(post.picture, :default_common_image), alt: '投稿画像のダミー', class: 'post-picture-form', id: :post_picture_prev %></p>
+    <p class="mb-2"><%= image_tag set_image(post.picture, 'default_common_image.png'), alt: '投稿画像のダミー', class: 'post-picture-form', id: :post_picture_prev %></p>
     <%= f.file_field :picture, accept: '.jpg, .png, .gif', id: :post_picture %>
     <%= f.hidden_field :picture_cache %>
     <p class="mt-2"><label><%= f.check_box :remove_picture, id: :remove_picture %>画像を削除する</label></p>

@@ -2,10 +2,9 @@
   <div class="content-header">
     <!-- ユーザー情報 -->
     <p><%= image_tag set_image(post.user.profile.icon, 'default_user_icon.png'), alt: post.user.name, class: 'cover50' %></p>
-    <div class="post-names">
-      <p class="post-user"><%= post.user.name %></p>
-      <p class="post-time"><%= format_date_time(post.created_at) %></p>
-    </div>
+
+    <%= render 'partial/post_name_and_created_time', post: post %>
+
     <!-- 詳細表示リンク -->
       <%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2 post-icon'), post_path(post) %>
 

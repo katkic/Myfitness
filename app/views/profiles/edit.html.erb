@@ -2,7 +2,7 @@
   <h1 class="page-title">プロフィール編集</h1><!-- /.page-title -->
 
   <div class="form-container mt-3">
-    <%= form_with model: @profile, html: {multipart: true}, local: true do |f| %>
+    <%= form_with model: @profile, html: { multipart: true }, local: true do |f| %>
       <% if @profile.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@profile.errors.count, '') %> 件のエラーがあります</h2>
@@ -22,14 +22,14 @@
             <i class="far fa-image fa-lg"></i>
             <%= f.label :header_image %><br>
           </div>
-          <p class="mb-2"><%= image_tag set_image(@profile.header_image, :default_header_image), alt: 'ヘッダー画像のダミー', class: 'header-image', id: :header_image_prev %></p>
+          <p class="mb-2"><%= image_tag set_image(@profile.header_image, 'default_header_image.png'), alt: 'ヘッダー画像のダミー', class: 'header-image', id: :header_image_prev %></p>
           <p class="pl-2"><%= f.file_field :header_image, accept: '.jpg, .png, .gif', id: :header_image %></p>
           <p class="mt-2 pl-2"><%= f.check_box :remove_header_image, id: :remove_header_image %><label for="remove_header_image">画像を削除する</label></p>
         </div><!-- /.form-group -->
 
         <%# ユーザーアイコン %>
         <div class="form-group picture-upload-area mb-2 p-2">
-          <p class="mb-2"><%= image_tag set_image(@profile.icon, :default_user_icon), alt: 'ユーザーアイコンのダミー', class: 'cover100', id: :user_icon_prev %></p>
+          <p class="mb-2"><%= image_tag set_image(@profile.icon, 'default_user_icon.png'), alt: 'ユーザーアイコンのダミー', class: 'cover100', id: :user_icon_prev %></p>
           <div class="picture-upload-area-right">
             <i class="far fa-image fa-lg"></i>
             <%= f.label :icon %><br>
