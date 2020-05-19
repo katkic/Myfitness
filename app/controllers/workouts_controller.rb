@@ -1,5 +1,6 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit]
 
   def index
     @exercise = Exercise.find(params[:id])
@@ -8,7 +9,7 @@ class WorkoutsController < ApplicationController
 
   def show
     @exercise_logs = @workout.exercise_logs.order(set: :asc)
-    @user = @workout.user
+    @user = set_user
   end
 
   def new
@@ -28,7 +29,9 @@ class WorkoutsController < ApplicationController
     end
   end
 
-  def edit;end
+  def edit
+    @user = set_user
+  end
 
 
   def update
@@ -59,5 +62,9 @@ class WorkoutsController < ApplicationController
   def set_workout
     @workout = Workout.find(params[:id])
     @exercise = @workout.exercise
+  end
+
+  def set_user
+    @workout.user
   end
 end
