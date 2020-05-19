@@ -115,4 +115,27 @@ RSpec.describe 'トレーニング種目に関するテスト', type: :model do
       end
     end
   end
+
+  describe '1RMを計算するクラスメソッド ExerciseLog.get_one_rm (method)' do
+    let!(:user) { create(:user) }
+    let!(:exercise) { create(:exercise, name: 'ベンチプレス', user: user) }
+    let!(:workout) { create(:workout, user: user, exercise: exercise) }
+
+    before do
+      @exercise_log = create(:exercise_log, set: 1, weight: 62.5, rep: 10, workout: workout)
+      @exercise_log2 = create(:exercise_log, set: 1, weight: 62.5, rep: 1, workout: workout)
+    end
+
+    context 'トレーニングが10rep(62.5kg)のとき' do
+      it '78.1kgを返すこと' do
+        expect(ExerciseLog.get_one_rm(@exercise_log)).to eq 78.1
+      end
+    end
+
+    context 'トレーニングが1rep(62.5kg)のとき' do
+      it '62.5kgを返すこと' do
+        expect(ExerciseLog.get_one_rm(@exercise_log2)).to eq 62.5
+      end
+    end
+  end
 end

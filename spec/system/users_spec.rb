@@ -109,6 +109,22 @@ RSpec.describe 'ユーザー機能', type: :system do
       end
     end
 
+    context 'ログイン後にアカウント編集画面でメールアドレスを変更したとき' do
+      let(:login_user) { user_a }
+
+      before do
+        click_on "#{user_a.name}"
+        click_on 'アカウント編集'
+        fill_in 'メールアドレス', with: 'taro@example.com'
+        fill_in '現在のパスワード', with: 'password!'
+        click_on '更新する'
+      end
+
+      it 'メールアドレスが更新されていること' do
+        expect(page).to have_content 'アカウント情報を変更しました。'
+      end
+    end
+
     context 'ログイン後にユーザー一覧をクリックしたとき' do
       let(:login_user) { user_a }
 
