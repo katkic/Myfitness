@@ -1,11 +1,13 @@
-<%= link_to profile_path(user) do %>
+<% if user.profile.public_flag %>
+  <%= link_to profile_path(user) do %>
+    <p><%= image_tag set_image(user.profile.icon, 'default_user_icon.png'), alt: user.name, class: 'cover50 mr-2' %>
+  <% end %>
+<% else %>
   <p><%= image_tag set_image(user.profile.icon, 'default_user_icon.png'), alt: user.name, class: 'cover50 mr-2' %>
 <% end %>
 
 <% if user.profile.public_flag %>
-  <%= link_to profile_path(user) do %>
-    <p class="post-user profile-name"><%= link_to user.name, profile_path(user), class: 'post-user' %></p>
-  <% end %>
+  <p class="post-user profile-name"><%= link_to user.name, profile_path(user), class: 'post-user' %></p>
 <% else %>
   <p class="post-user profile-name"><%= user.name %></p>
 <% end %>
