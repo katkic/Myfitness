@@ -43,8 +43,7 @@
         <%= link_to content_tag(:p, "#{@followers_count} フォロワー"), relationships_path(user_id: @user.id, flag: 'followers') %>
       </div>
       <div class="training_calendar">
-        <%#= link_to 'トレーニング記録', calendar_path(@user) %>
-        <%= link_to 'トレーニング記録', workout_logs_path(id: @user) %>
+        <%= link_to 'トレーニング記録', workout_logs_path(id: @user), class: 'btn btn-success btn-sm text-white' %>
       </div>
     </div><!-- /.profile -->
 

@@ -15,7 +15,7 @@ Profile.create!(user_id: 1, height: 175.0, self_introduction: 'こんにちは�
 users = %w[taro jiro saburo shiro goro rokuro shichiro hachiro kuro juro]
 users.each_with_index do |user, index|
   User.create!(name: "#{user}", email: "#{user}@example.com", password: "pass#{user}")
-  Profile.create!(user_id: index + 2, self_introduction: "#{user}こんにちはです。")
+  Profile.create!(user_id: index + 2, self_introduction: "こんにちは、#{user}です。")
 end
 
 chest_arr = %w[ベンチプレス ダンベルベンチプレス ダンベルフライ]  # 1, 2, 3
@@ -48,9 +48,9 @@ Exercise.create!(name: 'インクラインダンベルカール', part: 5, categ
 # user1用データ
 Menu.new(name: '基本セット', user_id: 1).save(validate: false)
 
-MenuRelationship.new(menu_id: 1, exercise_id: 1).save(validate: false)
-MenuRelationship.new(menu_id: 1, exercise_id: 4).save(validate: false)
-MenuRelationship.new(menu_id: 1, exercise_id: 6).save(validate: false)
+MenuRelationship.new(menu_id: 1, exercise_id: 1).save(validate: false)  # ベンチプレス
+MenuRelationship.new(menu_id: 1, exercise_id: 4).save(validate: false)  # スクワット
+MenuRelationship.new(menu_id: 1, exercise_id: 6).save(validate: false)  # デッドリフト
 
 
 # ベンチプレス ------------------------------
@@ -257,4 +257,26 @@ day.downto(1) do |i|
   BodyStatus.create!(user_id: 1, body_weight: weight, body_fat: fat, created_at: get_day_ago(now, i))
   weight = (weight - 0.1).round(1)
   fat = (fat - 0.1).round(1)
+end
+
+# 投稿
+Post.create!(user_id: 1, content: "今日のトレーニング\r\nベンチプレス 50×10×3set\r\nスクワット    55×10×3set\r\nデッドリフト 60×10×3set", )
+
+# 投稿へのいいね
+(2..10).each do |i|
+  Like.create!(user_id: i, post_id: 1)
+end
+
+# 投稿へのコメント
+Comment.create!(user_id: 2, post_id: 1, content: 'ナイストレ！！')
+Comment.create!(user_id: 3, post_id: 1, content: '頑張ってますね！')
+Comment.create!(user_id: 4, post_id: 1, content: 'ファイト！！')
+
+# フォロー・フォロワーデータ
+(3..10).each do |i|
+  Relationship.create!(follower_id: 1, followed_id: i)
+end
+
+(3..10).each do |i|
+  Relationship.create!(follower_id: i, followed_id: 1)
 end
