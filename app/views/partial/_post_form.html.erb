@@ -14,7 +14,7 @@
   <div class="post-main-content">
     <div class="form-group">
       <div class="time-area">
-        <%= format_date_time(@post.created_at) %>
+        <%= format_date_time(Time.zone.now) %>
       </div><!-- /.time-area -->
 
       <div class="content-header">
@@ -29,12 +29,16 @@
 
   <%# 画像投稿 %>
   <div class="form-group post-picture-content mb-4">
-    <i class="far fa-image fa-lg"></i>
-    <%= f.label :picture %><br>
-    <p class="mb-2"><%= image_tag set_image(post.picture, 'default_common_image.png'), alt: '投稿画像のダミー', class: 'post-picture-form', id: :post_picture_prev %></p>
-    <%= f.file_field :picture, accept: '.jpg, .png, .gif', id: :post_picture %>
-    <%= f.hidden_field :picture_cache %>
-    <p class="mt-2"><label><%= f.check_box :remove_picture, id: :remove_picture %>画像を削除する</label></p>
+    <div class="post-picture-label">
+      <i class="far fa-image fa-lg"></i>
+      <%= f.label :picture %>
+    </div><!-- /.post-label -->
+    <p><%= image_tag set_image(post.picture, 'default_common_image.png'), alt: '投稿画像のダミー', class: 'post-picture-area', id: :post_picture_prev %></p>
+    <div class="post-picture-select">
+      <%= f.file_field :picture, accept: '.jpg, .png, .gif', id: :post_picture %>
+      <%= f.hidden_field :picture_cache %>
+      <p class="mt-2"><label><%= f.check_box :remove_picture, id: :remove_picture %>画像を削除する</label></p>
+    </div><!-- /.post-picture-select -->
   </div><!-- /.form-group -->
 
   <div class="nav-menu">
