@@ -23,6 +23,8 @@ class Workout < ApplicationRecord
       order(created_at: :desc)
     else
       exercise = Exercise.find_by(name: search_params[:name])
+      return order(created_at: :desc) if exercise.nil?
+
       where(exercise_id: exercise.id).order(created_at: :desc)
     end
   end
