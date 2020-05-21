@@ -14,7 +14,11 @@
   <div class="post-main-content">
     <div class="form-group">
       <div class="time-area">
-        <%= format_date_time(Time.zone.now) %>
+        <% if action_name == 'new' %>
+          <%= format_date_time(Time.zone.now) %>
+        <% elsif action_name == 'edit' %>
+          <%= format_date_time(@post.created_at) %>
+        <% end %>
       </div><!-- /.time-area -->
 
       <div class="content-header">

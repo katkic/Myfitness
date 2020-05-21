@@ -38,13 +38,14 @@ class ExercisesController < ApplicationController
 
   def search
     @search_params = exercise_search_params
+    @exercises_preset = Exercise.exercise_search(@search_params)
 
-    if @search_params[:name].blank? && @search_params[:part].blank? && @search_params[:category].blank?
-      set_exercise_preset_and_original
-    else
-      @search_params[:preset] = true
-      @exercises_preset = Exercise.exercise_search(@search_params)
-    end
+    # if @search_params[:name].blank? && @search_params[:part].blank? && @search_params[:category].blank?
+    #   set_exercise_preset_and_original
+    # else
+      # @search_params[:preset] = true
+      # @exercises_preset = Exercise.exercise_search(@search_params)
+    # end
 
     render :index
   end
@@ -69,7 +70,7 @@ class ExercisesController < ApplicationController
 
   def set_exercise_preset_and_original
     @exercises_preset = Exercise.preset
-    @exercises_original = Exercise.original
+    @exercises_original = Exercise.original(current_user)
   end
 
   def exercise_search_params

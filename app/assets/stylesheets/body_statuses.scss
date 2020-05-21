@@ -4,3 +4,17 @@
   height: auto;
   background-color: #fff;
 }
+
+.edit-profile-link {
+  text-decoration: underline;
+}
+
+.body {
+  &-weight-required {
+  color: red;
+  }
+
+  &-fat-option {
+    color: gray;
+  }
+}

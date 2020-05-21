@@ -4,7 +4,7 @@ RSpec.describe 'トレーニングメニュー', type: :system do
   describe '管理機能' do
     let(:user_a) { create(:user, name: 'ユーザーA', email: 'a@example.com', admin: true) }
     let(:user_b) { create(:user, name: 'ユーザーB', email: 'b@example.com', admin: false) }
-    let!(:exercise) { create(:exercise, name: 'ベンチプレス', user: user_a) }
+    let!(:exercise) { create(:exercise, name: 'ベンチプレス', preset: true, user: user_a) }
     let!(:exercise2) { create(:exercise2, name: 'スクワット', preset: true, user: user_a) }
     let!(:exercise3) { create(:exercise3, name: 'ダンベルベンチプレス', user: user_a) }
     let!(:exercise4) { create(:exercise4, name: 'チェストプレス', user: user_a) }

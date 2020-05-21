@@ -67,7 +67,7 @@ RSpec.describe 'トレーニング種目', type: :system do
         let(:login_user) { user_a }
 
         before do
-          click_on '編集'
+          all('.menu-icon')[0].click
           select 'その他', from: '部位'
           select 'マシン', from: 'カテゴリー'
           fill_in '説明', with: '編集テストです。'

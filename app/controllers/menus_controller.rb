@@ -50,6 +50,6 @@ class MenusController < ApplicationController
 
   def set_exercises
     @exercises_preset = Exercise.preset
-    @exercises_original = Exercise.original
+    @exercises_original = Exercise.original(current_user)
   end
 end

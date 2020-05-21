@@ -11,9 +11,9 @@ class BodyStatus < ApplicationRecord
   paginates_per 14
 
   def self.get_bmi(height, weight)
-    return if height.blank?
+    return if height.blank? || height <= 0.0
 
-    (weight / (height / 100) ** 2).floor
+    (weight / (height / 100) ** 2).floor(2)
   end
 
   scope :get_body_status_records, -> (current_user, range, column) do

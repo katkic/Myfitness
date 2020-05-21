@@ -25,12 +25,12 @@
       <tbody>
         <% @workouts.each do |workout| %>
           <tr>
-            <td><%= link_to format_date(workout.created_at), workout_path(workout) %>
+            <td><%= link_to format_date(workout.created_at), workout_path(workout), class: 'workout-date' %></td>
             <td class="text-center"><%= workout.set %></td>
             <td class="text-right pr-4"><%= workout.max_weight.round(1) %></td>
             <td class="text-right pr-5"><%= workout.max_one_rm.round(1) %></td>
             <td class="text-right pr-5"><%= workout.total_weight.round(1) %></td>
-            <td><%= link_to '編集', edit_workout_path(workout), class: 'btn btn-success btn-sm text-white' %></td>
+            <td><%= link_to content_tag(:i, '', class: 'fas fa-pen menu-icon'), edit_workout_path(workout) %></td>
           </tr>
         <% end %><!-- /@worktous.each do |menu| -->
       </tbody>

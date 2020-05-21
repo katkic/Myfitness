@@ -62,7 +62,7 @@ RSpec.describe '体重・体脂肪', type: :system do
         let(:login_user) { user_a }
 
         before do
-          click_on '編集'
+          all('.menu-icon')[0].click
           fill_in '体重', with: 80
           fill_in '体脂肪', with: 15.0
           click_on '更新する'
@@ -79,7 +79,7 @@ RSpec.describe '体重・体脂肪', type: :system do
         let(:login_user) { user_a }
 
         before do
-          click_on '削除'
+          all('.menu-icon')[1].click
         end
 
         it '体重記録が削除されていること' do

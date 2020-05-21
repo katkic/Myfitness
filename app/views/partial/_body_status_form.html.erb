@@ -16,15 +16,27 @@
       <%= f.datetime_select :created_at, {}, value: Time.now.strftime("%Y-%m-%d") %>
     </div><!-- /.form-group -->
 
+    <div>
+        <label>身長</label>
+        <% if current_user.profile.height.nil? %>
+          <p>未設定です。<%= link_to 'プロフィール編集', edit_profile_path(current_user), class: 'edit-profile-link' %>で身長を入力してください</p>
+        <% else %>
+          <%= current_user.profile.height %> cm
+          <p><%= link_to '身長を変更', edit_profile_path(current_user), class: 'edit-profile-link' %></p>
+        <% end %>
+      </div>
+
     <div class="form-group mt-4">
       <%= f.label :body_weight %>
+      <p class="body-weight-required">&nbsp;(必須)</p>
       <%= f.number_field :body_weight, min: 1, max:150, step:0.1, class: 'form-control' %>
     </div><!-- /.form-group -->
 
     <div class="form-group">
       <%= f.label :body_fat %>
+      <p class="body-fat-option">&nbsp;(オプション)</p>
       <%= f.number_field :body_fat, min: 1, max:50, step:0.1, class: 'form-control' %>
-    </div><!-- /.form-group -->
+</div><!-- /.form-group -->
 
     <%# 写真1 %>
     <div class="form-group mb-2 picture-upload-area">

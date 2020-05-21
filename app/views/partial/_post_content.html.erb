@@ -8,7 +8,7 @@
     </div>
 
     <!-- 詳細表示リンク -->
-      <%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2 post-icon'), post_path(post) %>
+      <%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2 post-icon'), post_path(post) unless action_name == 'show' %>
 
     <% if post.user.id == current_user.id %>
       <div class="post-icons">
@@ -24,9 +24,9 @@
     <p class="post-content"><%= post.content %></p>
   </div><!-- /.content-body -->
 
-  <div class="picture-area">
-    <p class="mb-2"><%= image_tag post.picture.url, alt: '投稿写真', class: 'post-picture' if post.picture.present? %></p>
-  </div><!-- /.picture-area -->
+  <div>
+    <p><%= image_tag post.picture.url, alt: '投稿写真', class: 'post-picture-area' if post.picture.present? %></p>
+  </div>
 
     <div class="content-footer">
       <!-- いいね, コメントアイコン -->

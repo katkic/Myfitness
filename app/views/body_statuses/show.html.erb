@@ -12,7 +12,11 @@
     </tr>
     <tr>
       <th>体脂肪</th>
-      <td><%= @body_status.body_fat %> %</td>
+      <% if @body_status.body_fat.present? %>
+        <td><%= @body_status.body_fat %> %</td>
+      <% else %>
+        <td>-</td>
+      <% end %>
     </tr>
     <tr>
       <th>BMI</th>
