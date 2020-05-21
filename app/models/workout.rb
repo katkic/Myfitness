@@ -25,7 +25,7 @@ class Workout < ApplicationRecord
       exercise = Exercise.find_by(name: search_params[:name])
       return find_workout_logs_by_user_id(search_params) if exercise.nil?
 
-      where(exercise_id: exercise.id).order(created_at: :desc)
+      where(exercise_id: exercise.id).order(created_at: :desc).find_workout_logs_by_user_id(search_params)
     end
   end
 
