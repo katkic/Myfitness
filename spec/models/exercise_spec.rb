@@ -77,11 +77,11 @@ RSpec.describe 'トレーニング種目に関するテスト', type: :model do
 
     context '種目をoriginalで検索した場合' do
       it 'ユーザーが独自に登録した種目を返すこと' do
-        expect(Exercise.original).to include(exercise2)
+        expect(Exercise.original(user_b)).to include(exercise2)
       end
 
       it 'デフォルトで登録されている種目を返さないこと' do
-        expect(Exercise.original).not_to include(exercise)
+        expect(Exercise.original(user_b)).not_to include(exercise)
       end
     end
 

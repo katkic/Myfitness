@@ -28,7 +28,7 @@ RSpec.describe 'トレーニング記録', type: :system do
     end
 
     describe '新規作成' do
-      context '種目のリンクを押したとき' do
+      context 'トレーニング記録を作成したとき' do
         let(:login_user) { user }
 
         before do
@@ -44,12 +44,66 @@ RSpec.describe 'トレーニング記録', type: :system do
           click_on '登録する'
         end
 
-        it 'トレーニング記録の一覧が表示されていること' do
+        it '作成したトレーニング記録が表示されていること' do
           expect(page).to have_content '記録しました'
           expect(page).to have_content 'ベンチプレス'
         end
       end
     end
+
+    describe '詳細表示' do
+      context '日付のリンクを押したとき' do
+        let(:login_user) { user }
+
+        before do
+          all('.workout-date')[0].click
+        end
+
+        it 'トレーニング記録の詳細が表示されていること' do
+          expect(page).to have_content 'ベンチプレス'
+          expect(page).to have_content '62.5'
+        end
+      end
+    end
+
+    describe '編集' do
+      context 'トレーニング記録を編集したとき' do
+        let(:login_user) { user }
+
+        before do
+          sleep 0.1
+          all('.menu-icon')[0].click
+          fill_in 'workout_exercise_logs_attributes_0_weight', with: 70.0
+          fill_in 'workout_exercise_logs_attributes_0_rep', with: 8
+          click_on '更新する'
+        end
+
+        it 'トレーニング記録が更新されていること' do
+          expect(page).to have_content '更新しました'
+        end
+      end
+    end
+
+    describe '削除' do
+      context '削除リンクを押したとき' do
+        let(:login_user) { user }
+
+        before do
+          all('.workout-date')[0].click
+          click_on '削除'
+        end
+
+        it 'トレーニング記録が削除されていること' do
+          expect do
+            page.accept_confirm do
+              click_on :delete_button
+            end
+            expect(page).to have_content '削除しました'
+          end
+        end
+      end
+    end
+
 
     describe '入力フォームの削除' do
       context '入力フォームを最後の1つまで削除したとき' do
