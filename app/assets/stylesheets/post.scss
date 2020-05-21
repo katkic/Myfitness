@@ -14,6 +14,13 @@
   margin-bottom: 10px;
 }
 
+.post-picture-area {
+  width: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+  height: auto;
+}
+
 .post-main-content {
   background-color: #fff;
   border: 1px solid #ebebeb;
@@ -22,13 +29,20 @@
   margin-top: 20px;
 }
 
+.post-picture-label {
+  padding: 15px 15px 5px;
+}
+
 .post-picture-content {
-  padding: 15px;
   background-color: #fff;
   border: 1px solid #ebebeb;
   border-radius: 3px;
   margin-bottom: 20px;
   margin-top: 20px;
+}
+
+.post-picture-select {
+  padding: 15px 15px 5px;
 }
 
 .user-container {
@@ -105,21 +119,8 @@
   background: #fff;
   border-radius: 3px;
 }
+
 .comment-content {
   margin-left: 65px;
   white-space: pre-wrap;
-}
-
-.post-picture {
-  object-fit: cover;
-  width: 100%;
-  height: auto;
-  background-color: #fff;
-}
-
-.post-picture-form {
-  object-fit: cover;
-  width: 300px;
-  height: auto;
-  background-color: #fff;
 }
