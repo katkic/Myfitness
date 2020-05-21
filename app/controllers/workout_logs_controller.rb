@@ -24,6 +24,6 @@ class WorkoutLogsController < ApplicationController
   end
 
   def workout_logs_search_params
-    params.fetch(:search, {}).permit(:name)
+    params.fetch(:search, {}).permit(:name, :user_id)
   end
 end

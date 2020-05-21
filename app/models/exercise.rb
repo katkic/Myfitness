@@ -27,16 +27,15 @@ class Exercise < ApplicationRecord
   }
 
   scope :preset, -> { where(preset: true) }
-  scope :original, -> { where(preset: false) }
+  scope :original, -> (current_user) { where(preset: false).where(user_id: current_user.id) }
 
   scope :exercise_search, -> (search_params) do
-    if search_params[:name].present?
-      name_like(search_params[:name])
-    elsif search_params[:part].present?
-      preset_is.part_is(search_params[:part])
-    elsif search_params[:category].present?
-      preset_is.category_is(search_params[:category])
-    end
+    return if search_params.blank?
+
+    where(preset: true)
+      .name_like(search_params[:name])
+      .part_is(search_params[:part])
+      .category_is(search_params[:category])
   end
 
   scope :name_like, -> (name) { where('name LIKE ?', "%#{name}%") if name.present? }

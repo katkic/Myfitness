@@ -20,13 +20,17 @@ class Workout < ApplicationRecord
 
   scope :search_workout, -> (search_params) do
     if search_params[:name].blank?
-      order(created_at: :desc)
+      find_workout_logs_by_user_id(search_params)
     else
       exercise = Exercise.find_by(name: search_params[:name])
-      return order(created_at: :desc) if exercise.nil?
+      return find_workout_logs_by_user_id(search_params) if exercise.nil?
 
       where(exercise_id: exercise.id).order(created_at: :desc)
     end
+  end
+
+  scope :find_workout_logs_by_user_id, -> (search_params) do
+    where(user_id: search_params[:user_id]).order(created_at: :desc)
   end
 
   scope :get_workout_records, -> (user, exercise_id, range, column) do
