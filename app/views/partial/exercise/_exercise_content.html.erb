@@ -6,7 +6,7 @@
         <td class="align-middle"><%= link_to exercise.name, exercise_path(exercise) %></td>
         <td class="align-middle"><%= exercise.part_i18n %></td>
         <td class="align-middle"><%= exercise.category_i18n %></td>
-        <td class="align-middle"><%= link_to '編集', edit_exercise_path(exercise), class: 'btn btn-success btn-sm text-white' if exercise.user.id == current_user.id %></td>
+        <td class="align-middle"><%= link_to content_tag(:i, '', class: 'fas fa-pen menu-icon'), edit_exercise_path(exercise) if exercise.user_id == current_user.id %></td>
       </tr>
     </tbody>
   <% end %>

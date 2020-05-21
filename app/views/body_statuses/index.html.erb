@@ -25,14 +25,21 @@
         <tr>
           <td><%= link_to format_date_time(body_status.created_at), body_status_path(body_status), class: 'body-status' %></td>
           <td><%= body_status.body_weight %></td>
-          <td><%= body_status.body_fat %></td>
+
+          <% if body_status.body_fat.present? %>
+            <td><%= body_status.body_fat %></td>
+          <% else %>
+            <td>-</td>
+          <% end %>
+
           <% unless @height.blank? %>
             <td><%= BodyStatus.get_bmi(@height, body_status.body_weight) %></td>
           <% else %>
             <td>-</td>
           <% end %>
-          <td><%= link_to '編集', edit_body_status_path(body_status), class: 'btn-sm btn-success text-white' %></td>
-          <td><%= link_to '削除', body_status_path(body_status), method: :delete, data: { confirm: '削除してもよろしいですか？' }, class: 'btn-sm btn-danger text-white' %></td>
+
+          <td><%= link_to content_tag(:i, '', class: 'fas fa-pen menu-icon'), edit_body_status_path(body_status) %></td>
+          <td><%= link_to content_tag(:i, '', class: 'fas fa-trash menu-icon'), body_status_path(body_status), method: :delete, data: { confirm: '記録を削除してよろしいですか？' } %></td>
         </tr>
       <% end %>
     </tbody>
