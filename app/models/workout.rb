@@ -19,18 +19,14 @@ class Workout < ApplicationRecord
   before_validation :calculate_weight
 
   scope :search_workout, -> (search_params) do
-    if search_params[:name].blank?
-      find_workout_logs_by_user_id(search_params)
-    else
-      exercise = Exercise.find_by(name: search_params[:name])
-      return find_workout_logs_by_user_id(search_params) if exercise.nil?
+    return if search_params.blank?
 
-      where(exercise_id: exercise.id).order(created_at: :desc).find_workout_logs_by_user_id(search_params)
-    end
+    exercise = Exercise.name_like(search_params[:name])
+    where(exercise_id: exercise.ids).find_workout_logs_by_user_id(search_params).order(created_at: :desc)
   end
 
   scope :find_workout_logs_by_user_id, -> (search_params) do
-    where(user_id: search_params[:user_id]).order(created_at: :desc)
+    where(user_id: search_params[:user_id])
   end
 
   scope :get_workout_records, -> (user, exercise_id, range, column) do
