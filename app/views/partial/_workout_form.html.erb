@@ -28,7 +28,7 @@
             <li class="exercise-set"></span></li>
             <li><%= ef.hidden_field :set, class: 'exercise-set-hidden' %></li>
             <li><%= ef.number_field :weight, min: 1, max:300, step:0.1, class: 'py-2 exercise-input weight' %></li>
-            <li><%= ef.number_field :rep, min: 1, max: 300, step:0.1, class: 'py-2 exercise-input rep' %></li>
+            <li><%= ef.number_field :rep, min: 1, max: 100, step:1, class: 'py-2 exercise-input rep' %></li>
             <li class="remove-link"><%= ef.link_to_remove '削除' %></li>
           <% end %>
 

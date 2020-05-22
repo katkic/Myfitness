@@ -18,7 +18,7 @@
           <th>最大重量</th>
           <th>1RM(MAX)</th>
           <th>合計重量</th>
-          <th colspan="2">(kg)</th>
+          <th colspan="2"></th>
         </tr>
       </thead>
 
@@ -30,6 +30,7 @@
             <td class="text-right pr-4"><%= workout.max_weight.round(1) %></td>
             <td class="text-right pr-5"><%= workout.max_one_rm.round(1) %></td>
             <td class="text-right pr-5"><%= workout.total_weight.round(1) %></td>
+            <td><%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2 post-icon'), workout_path(workout) unless action_name == 'show' %></td>
             <td><%= link_to content_tag(:i, '', class: 'fas fa-pen menu-icon'), edit_workout_path(workout) %></td>
           </tr>
         <% end %><!-- /@worktous.each do |menu| -->
