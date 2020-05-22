@@ -9,12 +9,10 @@
   text-decoration: underline;
 }
 
-.body {
-  &-weight-required {
+.caution {
   color: red;
-  }
+}
 
-  &-fat-option {
-    color: gray;
-  }
+.option {
+  color: gray;
 }

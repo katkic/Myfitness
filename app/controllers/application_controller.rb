@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    current_user.build_profile.save unless current_user.profile.present?
+    current_user.build_profile.save(validate: false) unless current_user.profile.present?
     menus_path
   end
 
