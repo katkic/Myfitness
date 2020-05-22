@@ -7,8 +7,8 @@ class WorkoutLogsController < ApplicationController
   end
 
   def search
-    search_params = workout_logs_search_params
-    @workout_logs = Workout.search_workout(search_params).page(params[:page])
+    @search_params = workout_logs_search_params
+    @workout_logs = Workout.search_workout(@search_params).page(params[:page])
     set_part_name_chart(@user)
     render :index
   end
