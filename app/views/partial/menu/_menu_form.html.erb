@@ -13,25 +13,31 @@
 
     <div class="form-group">
       <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control', id: 'menu_name', autofocus: true %>
+      <p class="form-name-alert"></p>
+      <div class="hoge">
+        <%= f.text_field :name, class: 'form-control', id: 'menu_name', autofocus: true %>
+      </div>
     </div><!-- /.form-group -->
 
-    <div class="form-group">
+    <div class="form-group mb-4">
       <%= f.label :interval %>
       <%= f.select :interval, options_for_select(Menu.intervals_i18n.invert, selected: :two), { include_brank: '選択してください' }, class: 'form-control', id: 'menu_interval' %>
     </div><!-- /.form-group -->
 
-    <div class="tab-wrap">
-      <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">プリセット</label>
-      <div class="tab-content">
-        <%= render 'partial/menu/menu_form_content', { f: f, exercises: exercises_preset } %>
-      </div>
+    <p class="form-chackbox-alert"></p>
+    <div class="hoge">
+      <div class="tab-wrap">
+        <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">プリセット</label>
+        <div class="tab-content">
+          <%= render 'partial/menu/menu_form_content', { f: f, exercises: exercises_preset, menu: @menu } %>
+        </div>
 
-      <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">オリジナル</label>
-      <div class="tab-content">
-        <%= render 'partial/menu/menu_form_content', { f: f, exercises: exercises_original } %>
-      </div>
-    </div><!-- /.tab-wap -->
+        <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">オリジナル</label>
+        <div class="tab-content">
+          <%= render 'partial/menu/menu_form_content', { f: f, exercises: exercises_original, menu: @menu } %>
+        </div>
+      </div><!-- /.tab-wap -->
+    </div>
 
     <div class="menu-new-footer">
       <%= link_to '戻る', menus_path, class: 'btn btn-outline-secondary' %>
