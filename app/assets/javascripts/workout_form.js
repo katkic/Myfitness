@@ -26,7 +26,7 @@ $(document).on('turbolinks:load', function () {
     setFieldNum();
     checkFieldNum();
 
-    var $link = $(e.currentTarget.activeElement);
+    let $link = $(e.currentTarget.activeElement);
 
     if (!$link.data('limit')) {
       return;
@@ -45,7 +45,7 @@ $(document).on('turbolinks:load', function () {
     setFieldNum();
     checkFieldNum();
 
-    var $link = $(e.target).siblings('a.add_nested_fields');
+    let $link = $(e.target).siblings('a.add_nested_fields');
 
     if (!$link.data('limit')) {
       return;
