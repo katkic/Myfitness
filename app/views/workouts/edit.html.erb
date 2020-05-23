@@ -2,6 +2,6 @@
   <h1 class="page-title mt-2">記録を編集</h1>
   <h2 class="page-title mt-2"><%= @exercise.name %></h2>
 
-  <%= render 'partial/workout_nav', user_id: @user.id %>
+  <%= render 'partial/workout_nav', user_id: @workout.user_id %>
   <%= render 'partial/workout_form', workout: @workout %>
 </div>
