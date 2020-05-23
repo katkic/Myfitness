@@ -3,7 +3,7 @@
 
   <% if @menus.empty? %>
     <div>
-      <p>トレーニングメニューを作成してください</p>
+      <p>トレーニングメニューを作成しましょう！</p>
       <%= link_to 'メニュー作成', new_menu_path, class: 'btn btn-primary text-white mt-3' %>
     </div>
   <% else %>
@@ -36,8 +36,8 @@
               <%= link_to exercise.name, workouts_path(id: exercise.id), class: 'menu-content-index-item-name' %>
             </div>
             <div>
-              <%= link_to '記録', new_workout_path(exercise_id: exercise.id), class: 'btn btn-primary btn-sm text-white' %>
-              <%= link_to '管理', workouts_path(id: exercise.id), class: 'btn btn-success btn-sm text-white' %>
+              <%= link_to '記録を作成', new_workout_path(exercise_id: exercise.id), class: 'btn btn-primary btn-sm text-white' %>
+              <%= link_to '記録の一覧', workouts_path(id: exercise.id), class: 'btn btn-success btn-sm text-white' %>
             </div>
           </div>
         <% end %>

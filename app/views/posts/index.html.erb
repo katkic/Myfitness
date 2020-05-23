@@ -2,11 +2,9 @@
   <h1 class="page-title mb-3">投稿一覧</h1>
   <% if @posts.empty? %>
     <p class="mb-2">投稿はありません</p>
-    <%= link_to '新規作成', new_post_path, class: 'btn btn-primary text-white' %>
+    <%= render 'partial/post_nav' %>
   <% else %>
-    <div class="text-right">
-      <%= link_to '新規作成', new_post_path, class: 'btn btn-primary text-white' %>
-    </div><!-- /.text-right -->
+    <%= render 'partial/post_nav' %>
 
     <% @posts.each do |post| %>
       <% @like = current_user.likes.find_by(post_id: post.id) %>

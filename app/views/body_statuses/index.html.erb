@@ -5,7 +5,7 @@
     <ul class="content-nav">
       <li><%= link_to '戻る', :back, class: 'btn btn-outline-secondary' %></li>
       <li><%= link_to content_tag(:i, '', class: 'fas fa-chart-line fa-2x ml-3'), charts_path(id: 0, range: 'all', user_id: current_user) %></li>
-      <li><%= link_to '新規作成', new_body_status_path(@body_status), class: 'btn btn-primary text-white' %></li>
+      <li><%= link_to '体重を記録', new_body_status_path(@body_status), class: 'btn btn-primary text-white' %></li>
     </ul>
   </nav>
 
