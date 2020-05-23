@@ -20,7 +20,7 @@ RSpec.describe '投稿', type: :system do
 
         before do
           sleep 0.3
-          click_link '新規作成'
+          click_link '投稿を作成'
           fill_in '今日の出来事', with: 'sample投稿です。'
           attach_file 'post[picture]', "#{Rails.root}/spec/files/default_common_image.png"
           click_on '投稿する'

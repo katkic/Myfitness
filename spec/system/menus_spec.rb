@@ -45,7 +45,7 @@ RSpec.describe 'トレーニングメニュー', type: :system do
         let(:login_user) { user_b }
 
         it 'ユーザーAのトレーニングメニューが表示されていないこと' do
-          expect(page).to have_content 'トレーニングメニューを作成してください'
+          expect(page).to have_content 'トレーニングメニューを作成しましょう！'
         end
       end
     end

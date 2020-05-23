@@ -19,7 +19,7 @@ RSpec.describe '体重・体脂肪', type: :system do
         let(:login_user) { user_a }
 
         before do
-          click_on '新規作成'
+          click_on '体重を記録'
           fill_in '体重', with: 68.5
           fill_in '体脂肪', with: 18.6
           click_on '登録する'

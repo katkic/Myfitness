@@ -1,35 +1,35 @@
 <table class="table table-hover">
-    <% exercises.each do |exercise| %>
-      <tbody>
-        <tr>
-          <td class="align-middle check-box">
-            <%= f.check_box :exercise_ids, {
-              multiple: true, checked: @menu.exercises.find_by(id: exercise.id).present?, include_hidden: false
-            }, exercise[:id] %>
-          </td>
+  <% exercises.each do |exercise| %>
+    <tbody>
+      <tr>
+        <td class="align-middle check-box">
+          <%= f.check_box :exercise_ids, {
+            multiple: true, checked: menu.exercises.find_by(id: exercise.id).present?, include_hidden: false
+          }, exercise[:id] %>
+        </td>
 
-          <td class="align-middle">
-            <label for="menu_exercise_ids_<%= exercise.id %>">
-              <%= image_tag set_image(exercise.icon, 'default_exercise_icon.png'), alt: 'トレーニングアイコン', class: 'rect-50' %>
-            </label>
-          </td>
+        <td class="align-middle">
+          <label for="menu_exercise_ids_<%= exercise.id %>">
+            <%= image_tag set_image(exercise.icon, 'default_exercise_icon.png'), alt: 'トレーニングアイコン', class: 'rect-50' %>
+          </label>
+        </td>
 
-          <td class="align-middle">
-            <label for="menu_exercise_ids_<%= exercise.id %>">
-              <%= exercise.name %>
-            </label>
-          </td>
+        <td class="align-middle">
+          <label for="menu_exercise_ids_<%= exercise.id %>">
+            <%= exercise.name %>
+          </label>
+        </td>
 
-          <td class="align-middle">
-            <label for="menu_exercise_ids_<%= exercise.id %>"><%= exercise.part_i18n %></label>
-          </td>
+        <td class="align-middle">
+          <label for="menu_exercise_ids_<%= exercise.id %>"><%= exercise.part_i18n %></label>
+        </td>
 
-          <td class="align-middle">
-            <label for="menu_exercise_ids_<%= exercise.id %>">
-              <%= exercise.category_i18n %>
-            </label>
-          </td>
-        </tr>
-      </tbody>
-    <% end %>
+        <td class="align-middle">
+          <label for="menu_exercise_ids_<%= exercise.id %>">
+            <%= exercise.category_i18n %>
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  <% end %>
 </table>

@@ -6,7 +6,7 @@
   <%= render '/partial/search_workout_log' %>
 
   <div class="workout_logs-nav">
-    <%= link_to '戻る', :back, class: 'btn btn-outline-secondary btn-sm' %>
+    <%= link_to '戻る', :back, class: 'btn btn-outline-secondary' %>
 
     <div class="workout_log-calendar">
       <%= link_to content_tag(:i, '', class: 'far fa-calendar-alt fa-2x ml-3'), calendar_path(@user.id) %>
@@ -34,8 +34,9 @@
           <td class="text-right pr-4"><%= workout_log.max_weight.round(1) %></td>
           <td class="text-right pr-5"><%= workout_log.max_one_rm.round(1) %></td>
           <td class="text-right pr-5"><%= workout_log.total_weight.round(1) %></td>
+          <td><%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2 post-icon'), workout_path(workout_log) %></td>
           <% if @user.id == current_user.id %>
-            <td><%= link_to '編集', edit_workout_path(workout_log), class: 'btn btn-success btn-sm text-white' %></td>
+            <td><%= link_to content_tag(:i, '', class: 'fas fa-pen menu-icon'), edit_workout_path(workout_log) %></td>
           <% end %>
         </tr>
       <% end %>

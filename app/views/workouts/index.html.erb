@@ -5,7 +5,7 @@
     <ul class="content-nav">
       <li><%= link_to '戻る', menus_path, class: 'btn btn-outline-secondary' %></li>
       <li><%= link_to content_tag(:i, '', class: 'fas fa-chart-line fa-2x ml-4 footer-icon'), charts_path({ id: @exercise.id, range: 'all', user_id: current_user.id }) %></li>
-      <li><%= link_to '新規作成', new_workout_path(exercise_id: @exercise.id), class: 'nav-link btn btn-primary text-white' %></li>
+      <li><%= link_to '記録を作成', new_workout_path(exercise_id: @exercise.id), class: 'nav-link btn btn-primary text-white' %></li>
     </ul>
   </nav>
 
@@ -30,7 +30,7 @@
             <td class="text-right pr-4"><%= workout.max_weight.round(1) %></td>
             <td class="text-right pr-5"><%= workout.max_one_rm.round(1) %></td>
             <td class="text-right pr-5"><%= workout.total_weight.round(1) %></td>
-            <td><%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2 post-icon'), workout_path(workout) unless action_name == 'show' %></td>
+            <td><%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2 post-icon'), workout_path(workout) %></td>
             <td><%= link_to content_tag(:i, '', class: 'fas fa-pen menu-icon'), edit_workout_path(workout) %></td>
           </tr>
         <% end %><!-- /@worktous.each do |menu| -->

@@ -31,7 +31,7 @@ RSpec.describe 'トレーニング種目', type: :system do
         let(:login_user) { user_b }
 
         before do
-          click_on '新規作成'
+          click_on '種目を作成'
           attach_file 'exercise[icon]', "#{Rails.root}/spec/files/default_common_image.png"
           fill_in '種目名', with: 'サンプル種目'
           select '胸', from: '部位'

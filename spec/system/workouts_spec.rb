@@ -32,7 +32,8 @@ RSpec.describe 'トレーニング記録', type: :system do
         let(:login_user) { user }
 
         before do
-          click_on '新規作成'
+          sleep 0.1
+          click_on '記録を作成'
           fill_in 'workout_exercise_logs_attributes_0_weight', with: 62.5
           fill_in 'workout_exercise_logs_attributes_0_rep', with: 10
           fill_in 'workout_exercise_logs_attributes_1_weight', with: 62.5
@@ -110,7 +111,7 @@ RSpec.describe 'トレーニング記録', type: :system do
         let(:login_user) { user }
 
         before do
-          click_on '新規作成'
+          click_on '記録を作成'
           all('.remove_nested_fields')[2].click
           all('.remove_nested_fields')[1].click
         end
@@ -126,7 +127,7 @@ RSpec.describe 'トレーニング記録', type: :system do
         let(:login_user) { user }
 
         before do
-          click_on '新規作成'
+          click_on '記録を作成'
           7.times do
             click_on '追加'
           end
