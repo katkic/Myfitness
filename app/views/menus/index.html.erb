@@ -29,15 +29,15 @@
 
         <p class="mb-2">インターバル : <%= menu.interval_i18n %>日</p>
 
-        <% menu.exercises.each do |exercise| %>
+        <% menu.exercises.order(:created_at).each do |exercise| %>
           <div class="menu-content-index-item">
             <div>
               <%= image_tag set_image(exercise.icon, 'default_exercise_icon.png'), alt: 'トレーニングアイコン', class: 'rect-50 mr-3' %>
               <%= link_to exercise.name, workouts_path(id: exercise.id), class: 'menu-content-index-item-name' %>
             </div>
             <div>
-              <%= link_to '記録を作成', new_workout_path(exercise_id: exercise.id), class: 'btn btn-primary btn-sm text-white' %>
               <%= link_to '記録の一覧', workouts_path(id: exercise.id), class: 'btn btn-success btn-sm text-white' %>
+              <%= link_to '記録を作成', new_workout_path(exercise_id: exercise.id), class: 'btn btn-primary btn-sm text-white' %>
             </div>
           </div>
         <% end %>
