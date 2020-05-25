@@ -21,7 +21,7 @@
 
     <div class="form-group mb-4">
       <%= f.label :interval %>
-      <%= f.select :interval, options_for_select(Menu.intervals_i18n.invert, selected: :two), { include_brank: '選択してください' }, class: 'form-control', id: 'menu_interval' %>
+      <%= f.select :interval, options_for_select(Menu.intervals_i18n.invert, selected: :two), {}, { class: 'form-control', id: 'menu_interval' } %>
     </div><!-- /.form-group -->
 
     <p class="form-chackbox-alert"></p>

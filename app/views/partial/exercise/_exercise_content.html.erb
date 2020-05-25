@@ -1,5 +1,5 @@
 <table class="table table-hover">
-  <% exercises&.each do |exercise| %>
+  <% exercises.order(:id)&.each do |exercise| %>
     <tbody>
       <tr>
         <td><p><%= image_tag set_image(exercise.icon, 'default_exercise_icon.png'), alt: exercise.name, class: 'rect-50 mr-2' %></p></td>
