@@ -24,8 +24,6 @@ $(document).on('turbolinks:load', function () {
   // 制限数は、f.link_to_add メソッドに data: { limit: 10 }で指定
   $(document).on('nested:fieldAdded', function (e) {
     setFieldNum();
-    checkFieldNum();
-
     let $link = $(e.currentTarget.activeElement);
 
     if (!$link.data('limit')) {
@@ -43,8 +41,6 @@ $(document).on('turbolinks:load', function () {
 
   $(document).on('nested:fieldRemoved', function (e) {
     setFieldNum();
-    checkFieldNum();
-
     let $link = $(e.target).siblings('a.add_nested_fields');
 
     if (!$link.data('limit')) {
