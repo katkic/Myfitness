@@ -9,9 +9,20 @@
   <h2 class="page-title"><%= select_range_title(@range_title) %></h2>
 
   <% if @exercise_id == '0' %>
-    <%= render 'partial/chart_body_status', { range_title: @range_title, body_weight_records: @body_weight_records, body_fat_records: @body_fat_records } %>
+    <!-- 体重・体脂肪のグラフ -->
+    <%= render 'partial/chart_body_status', {
+      range_title: @range_title,
+      chart_records: @chart_records,
+      chart_values: @chart_values
+    } %>
   <% else %>
-    <%= render 'partial/chart_workout', { range_title: @range_title, exercise_name: @exercise_name, max_weight_records: @max_weight_records, max_one_rm_records: @max_one_rm_records, total_weight_records: @total_weight_records } %>
+  <!-- トレーニングのグラフ -->
+    <%= render 'partial/chart_workout', {
+      range_title: @range_title,
+      exercise_name: @exercise_name,
+      chart_records: @chart_records,
+      chart_values: @chart_values
+    } %>
   <% end %>
 
   <!-- 表示期間のリンク -->

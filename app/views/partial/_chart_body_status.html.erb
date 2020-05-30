@@ -1,12 +1,12 @@
 <% if current_user.body_statuses.present? %>
   <div class="mt-3">
     <h2>体重</h2>
-    <%= line_chart body_weight_records, curve: false, height: '280px' %>
+    <%= line_chart chart_records['body_weight'], curve: false, height: '280px', min: chart_values['body_weight_min'], max: chart_values['body_weight_max'] %>
   </div>
 
   <div class="mt-3">
     <h2>体脂肪</h2>
-    <%= line_chart body_fat_records, colors: ['#b00'], curve: false, height: '280px' %>
+    <%= line_chart chart_records['body_fat'], colors: ['#b00'], curve: false, height: '280px', min: chart_values['body_fat_min'], max: chart_values['body_fat_max'] %>
   </div>
 <% else %>
   <p>記録がありません</p>
