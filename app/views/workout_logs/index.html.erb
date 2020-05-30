@@ -31,9 +31,9 @@
           <td><%= format_date(workout_log.created_at) %></td>
           <td><%= link_to workout_log.exercise.name, workout_path(workout_log) %></td>
           <td class="text-center"><%= workout_log.set %></td>
-          <td class="text-right pr-4"><%= workout_log.max_weight.round(1) %></td>
-          <td class="text-right pr-5"><%= workout_log.max_one_rm.round(1) %></td>
-          <td class="text-right pr-5"><%= workout_log.total_weight.round(1) %></td>
+          <td class="text-right pr-4"><%= workout_log.max_weight %></td>
+          <td class="text-right pr-5"><%= workout_log.max_one_rm %></td>
+          <td class="text-right pr-5"><%= workout_log.total_weight %></td>
           <td><%= link_to content_tag(:i, '', class: 'fas fa-info-circle fa-1_5x fa-fw mr-2 post-icon'), workout_path(workout_log) %></td>
           <% if @user.id == current_user.id %>
             <td><%= link_to content_tag(:i, '', class: 'fas fa-pen menu-icon'), edit_workout_path(workout_log) %></td>

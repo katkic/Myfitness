@@ -22,11 +22,7 @@ class Workout < ApplicationRecord
     return if search_params.blank?
 
     exercise = Exercise.name_like(search_params[:name])
-    where(exercise_id: exercise.ids).find_workout_logs_by_user_id(search_params).order(created_at: :desc)
-  end
-
-  scope :find_workout_logs_by_user_id, -> (search_params) do
-    where(user_id: search_params[:user_id])
+    where(exercise_id: exercise.ids).where(user_id: search_params[:user_id]).order(created_at: :desc)
   end
 
   scope :get_workout_records, -> (user, exercise_id, range, column) do
@@ -35,6 +31,14 @@ class Workout < ApplicationRecord
 
   scope :find_workout, -> (user, exercise_id, range) do
     user.workouts.where(exercise_id: exercise_id).where(created_at: range)
+  end
+
+  scope :get_chart_min, -> (user, exercise_id, range, column) do
+    find_workout(user, exercise_id, range).pluck(column).min - 1
+  end
+
+  scope :get_chart_max, -> (user, exercise_id, range, column) do
+    find_workout(user, exercise_id, range).pluck(column).max + 1
   end
 
   private
@@ -84,7 +88,7 @@ class Workout < ApplicationRecord
       end
     end
 
-    sum
+    sum.floor(1)
   end
 
   def once_or_more(exercise_logs)
