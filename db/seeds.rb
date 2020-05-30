@@ -15,7 +15,7 @@ Profile.create!(user_id: 1, height: 175.0, self_introduction: 'こんにちは�
 users = %w[taro jiro saburo shiro goro rokuro shichiro hachiro kuro juro]
 users.each_with_index do |user, index|
   User.create!(name: "#{user}", email: "#{user}@example.com", password: "pass#{user}")
-  Profile.create!(user_id: index + 2, self_introduction: "こんにちは、#{user}です。")
+  Profile.create!(user_id: index + 2, height: 170 + index, self_introduction: "こんにちは、#{user}です。")
 end
 
 chest_arr = %w[ベンチプレス ダンベルベンチプレス ダンベルフライ]  # 1, 2, 3
@@ -54,7 +54,7 @@ MenuRelationship.new(menu_id: 1, exercise_id: 6).save(validate: false)  # デッ
 
 
 # ベンチプレス ------------------------------
-# 24, 12, 6, 3, 2, 1ヶ月のデータ
+# 24, 12, 6, 3, 2, 1ヶ月前データ
 weight = 35
 add_weight = 30
 month_arr.each do |i|
@@ -66,10 +66,10 @@ month_arr.each do |i|
     ]
   )
   weight += add_weight
-  add_weight = (add_weight * 0.25).round(2)
+  add_weight = (add_weight * 0.25).round(1)
 end
 
-# 1ヶ月データ
+# 1ヶ月間データ
 day = 30
 weight = 75
 day.step(1, -3) do |i|
@@ -80,11 +80,10 @@ day.step(1, -3) do |i|
       { set: 3, weight: weight, rep: 10, created_at: get_day_ago(now, i) }
     ]
   )
-  weight = (weight + 0.1).round(2)
 end
 
 # スクワット ------------------------------
-# 24, 12, 6, 3, 2, 1ヶ月のデータ
+# 24, 12, 6, 3, 2, 1ヶ月前データ
 weight = 35
 add_weight = 30
 month_arr.each do |i|
@@ -99,7 +98,7 @@ month_arr.each do |i|
   add_weight =  (add_weight * 0.25).round(2)
 end
 
-# 1ヶ月データ
+# 1ヶ月間データ
 day = 30
 weight = 75
 day.step(1, -3) do |i|
@@ -110,12 +109,11 @@ day.step(1, -3) do |i|
       { workout_id: 2, set: 3, weight: weight, rep: 10, created_at: get_day_ago(now, i) }
     ]
   )
-  weight = (weight + 0.1).round(2)
 end
 
 
 # デッドリフト ------------------------------
-# 24, 12, 6, 3, 2, 1ヶ月のデータ
+# 24, 12, 6, 3, 2, 1ヶ月前データ
 weight = 40.0
 add_weight = 30
 month_arr.each do |i|
@@ -130,7 +128,7 @@ month_arr.each do |i|
   add_weight =  (add_weight * 0.25).round(2)
 end
 
-# 1ヶ月データ
+# 1ヶ月間データ
 day = 30
 weight = 80
 day.step(1, -3) do |i|
@@ -141,7 +139,6 @@ day.step(1, -3) do |i|
       { set: 3, weight: weight, rep: 10, created_at: get_day_ago(now, i) }
     ]
   )
-  weight = (weight + 0.1).round(2)
 end
 
 # user2用データ
@@ -152,7 +149,7 @@ MenuRelationship.new(menu_id: 2, exercise_id: 16).save(validate: false)  # コ�
 MenuRelationship.new(menu_id: 2, exercise_id: 19).save(validate: false)  # スカルクラッシャー
 
 # ミリタリープレス ------------------------------
-# 24, 12, 6, 3, 2, 1ヶ月のデータ
+# 24, 12, 6, 3, 2, 1ヶ月前データ
 weight = 15
 add_weight = 15
 month_arr.each do |i|
@@ -164,10 +161,10 @@ month_arr.each do |i|
     ]
   )
   weight += add_weight
-  add_weight = (add_weight * 0.25).round(2)
+  add_weight = (add_weight * 0.25).floor
 end
 
-# 1ヶ月データ
+# 1ヶ月間データ
 day = 30
 weight = 35
 day.step(1, -3) do |i|
@@ -182,7 +179,7 @@ end
 
 
 # コンセントレーションカール ------------------------------
-# 24, 12, 6, 3, 2, 1ヶ月のデータ
+# 24, 12, 6, 3, 2, 1ヶ月前データ
 weight = 5
 add_weight = 7.5
 month_arr.each do |i|
@@ -194,12 +191,12 @@ month_arr.each do |i|
     ]
   )
   weight += add_weight
-  add_weight = (add_weight * 0.175).floor(1)
+  add_weight = (add_weight * 0.175).floor
 end
 
-# 1ヶ月データ
-day = 11.75
-weight = 14
+# 1ヶ月間データ
+day = 30
+weight = 14.0
 day.step(1, -3) do |i|
   Workout.create(user_id: 2, exercise_id: 16, condition: 2, created_at: get_day_ago(now, i),
     exercise_logs_attributes: [
@@ -212,7 +209,7 @@ end
 
 
 # スカルクラッシャー ------------------------------
-# 24, 12, 6, 3, 2, 1ヶ月のデータ
+# 24, 12, 6, 3, 2, 1ヶ月前データ
 weight = 10
 add_weight =  7.5
 month_arr.each do |i|
@@ -224,12 +221,12 @@ month_arr.each do |i|
     ]
   )
   weight += add_weight
-  add_weight = (add_weight * 0.175).floor(0)
+  add_weight = (add_weight * 0.175).floor
 end
 
-# 1ヶ月データ
+# 1ヶ月間データ
 day = 30
-weight = 18.5
+weight = 19.0
 day.step(1, -3) do |i|
   Workout.create(user_id: 2, exercise_id: 19, condition: 2, created_at: get_day_ago(now, i),
     exercise_logs_attributes: [
@@ -242,6 +239,7 @@ end
 
 
 # 体重・体脂肪データ
+# 24, 12, 6, 3, 2, 1ヶ月前データ
 weight = 80.0
 fat = 25.0
 month_arr.each do |i|
@@ -250,14 +248,18 @@ month_arr.each do |i|
   fat -= 1.5
 end
 
+# 1ヶ月間データ
 day = 30
-weight = 69.5
-fat = 17.0
+weight = 69.9
+fat = 17.4
 day.downto(1) do |i|
   BodyStatus.create!(user_id: 1, body_weight: weight, body_fat: fat, created_at: get_day_ago(now, i))
   weight = (weight - 0.1).round(1)
   fat = (fat - 0.1).round(1)
 end
+
+# 今日のデータ
+BodyStatus.create!(user_id: 1, body_weight: 66.9, body_fat: 14.4, created_at: now)
 
 # 投稿
 Post.create!(user_id: 1, content: "今日のトレーニング\r\nベンチプレス 50×10×3set\r\nスクワット    55×10×3set\r\nデッドリフト 60×10×3set", )
