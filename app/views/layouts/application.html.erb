@@ -24,7 +24,9 @@
       </div>
     <% end %>
 
-    <%= yield %>
+    <div class="top-wrapper">
+      <%= yield %>
+    </div><!-- /.top-wrapper -->
 
     <%= render 'partial/footer' if current_user%>
   </body>
