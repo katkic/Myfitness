@@ -25,10 +25,20 @@ class BodyStatus < ApplicationRecord
   end
 
   scope :get_chart_min, -> (current_user, range, column) do
-    find_body_status(current_user, range).pluck(column).min - 1
+    arr = find_body_status(current_user, range).pluck(column)
+    unless arr.empty?
+      arr.min - 1
+    else
+      0
+    end
   end
 
   scope :get_chart_max, -> (current_user, range, column) do
-    find_body_status(current_user, range).pluck(column).max + 1
+    arr = find_body_status(current_user, range).pluck(column)
+    unless arr.empty?
+      arr.max + 1
+    else
+      0
+    end
   end
 end
