@@ -10,11 +10,15 @@
 
   <% if @exercise_id == '0' %>
     <!-- 体重・体脂肪のグラフ -->
-    <%= render 'partial/chart_body_status', {
-      range_title: @range_title,
-      chart_records: @chart_records,
-      chart_values: @chart_values
-    } %>
+    <% unless @chart_values.has_value?(0) %>
+      <%= render 'partial/chart_body_status', {
+        range_title: @range_title,
+        chart_records: @chart_records,
+        chart_values: @chart_values
+      } %>
+    <% else %>
+      <p class="text-center mt-4">データが存在しません</p>
+    <% end %>
   <% else %>
   <!-- トレーニングのグラフ -->
     <%= render 'partial/chart_workout', {
