@@ -1,19 +1,22 @@
 .footer {
+  width: 100%;
   background-color: #e9e9e9;
 }
 
-.container {
-  width: auto;
-  max-width: 600px;
-  padding: 0 15px;
+.footer-menu {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  width: 50%;
+  padding: 10px;
+  margin: 0 auto;
+}
 
-  .text-muted {
-    margin: 10px 0;
-    padding-top: 5px;
+.footer-menu li > .content:before {
+  display: block;
+  content: '';
+}
 
-    .footer-menu {
-      display: flex;
-      justify-content: space-evenly;
-    }
-  }
+.active-f {
+  border-bottom: 3px solid #333333;
 }

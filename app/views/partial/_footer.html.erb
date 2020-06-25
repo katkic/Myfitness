@@ -1,14 +1,25 @@
 <footer class="footer fixed-bottom">
-  <div class="container">
-    <nav class="text-muted">
-      <ul class="footer-menu">
-          <li><%= link_to content_tag(:i, '', class: 'fas fa-weight fa-2x footer-icon'), body_statuses_path %></li>
-          <li><%= link_to content_tag(:i, '', class: 'fas fa-chart-line fa-2x ml-4 footer-icon'), charts_path({id: 0, range: 'all', user_id: current_user.id}) %></li>
-          <li><%= link_to content_tag(:i, '', class: 'far fa-file fa-2x ml-4 footer-icon'), workout_logs_path(id: current_user) %></li>
-          <li><%= link_to content_tag(:i, '', class: 'far fa-calendar-alt fa-2x ml-4 footer-icon'), calendar_path(current_user.id) %></li>
-          <li><%= link_to content_tag(:i, '', class: 'fas fa-user-cog fa-2x ml-4 footer-icon'), profile_path(current_user) %></li>
-        </ul>
-      </ul>
-    </nav>
-  </div>
+  <nav>
+    <ul class="footer-menu">
+      <%= link_to body_statuses_path do %>
+        <li class="<%= 'active-f' if check_body_status_request_path(request.path) %>"><i class="fas fa-weight fa-2x footer-icon"></i><span class="content">体重記録</span></li>
+      <% end %>
+
+      <%= link_to charts_path({id: 0, range: 'all', user_id: current_user.id}) do %>
+        <li class="<%= 'active-f' if request.path == charts_path %>"><i class="fas fa-chart-line fa-2x footer-icon"></i><span class="content">グラフ</span></li>
+      <% end %>
+
+      <%= link_to workout_logs_path(id: current_user) do %>
+        <li class="<%= 'active-f' if request.path == workout_logs_path %>"><i class="far fa-clipboard fa-2x footer-icon"></i><span class="content">記録一覧</span></li>
+      <% end %>
+
+      <%= link_to calendar_path(current_user) do %>
+        <li class="<%= 'active-f' if request.path == calendar_path(current_user) %>"><i class="far fa-calendar-alt fa-2x footer-icon"></i><span class="content">カレンダー</span></li>
+      <% end %>
+
+      <%= link_to profile_path(current_user) do %>
+        <li class="<%= 'active-f' if request.path == profile_path(current_user) %>"><i class="fas fa-user-cog fa-2x footer-icon"></i><span class="content">マイページ</span></li>
+      <% end %>
+    </ul>
+  </nav>
 </footer>
