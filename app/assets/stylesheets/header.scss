@@ -1,8 +1,7 @@
 .header {
   padding: 10px 20px;
   height: 80px;
-  background-color: #2e2e2e;
-
+  background-color: #103459;
 
   a {
     color: #fff;
@@ -31,6 +30,20 @@
         display: flex;
         align-items: center;
       }
+
+      a:hover {
+        border-bottom: 3px solid #fff;
+        transition: all 0.3s ease 0s;
+      }
     }
   }
+}
+
+.current-h {
+  padding: 8px 16px 8px;
+  border-bottom: 3px solid #da5019;
+}
+
+.menu-link {
+  padding: 8px 16px 11px;
 }
