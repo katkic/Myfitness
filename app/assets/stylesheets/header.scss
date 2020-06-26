@@ -30,11 +30,20 @@
         display: flex;
         align-items: center;
       }
+
+      a:hover {
+        border-bottom: 3px solid #fff;
+        transition: all 0.3s ease 0s;
+      }
     }
   }
 }
 
-.header-menu .under-line:hover,
-.active-h {
-  border-bottom: 3px solid #fff;
+.current-h {
+  padding: 8px 16px 8px;
+  border-bottom: 3px solid #da5019;
+}
+
+.menu-link {
+  padding: 8px 16px 11px;
 }

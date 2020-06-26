@@ -19,15 +19,4 @@ module ApplicationHelper
     range_title = :all unless chart_title.has_key?(range_title)  # 不正な値が入ってきたら、range_titleを:allとする
     chart_title[range_title]
   end
-
-  # header, footerメニュー項目の現在ページを判定
-  # 体重記録のshow, editのとき、footerメニュー項目の体重記録にアンダーラインを引く
-  def check_body_status_request_path(request_path)
-    path_arr = [
-      body_statuses_path, new_body_status_path
-    ]
-    path_arr = edit_body_status_path if controller_name == 'body_statuses' && action_name == 'edit'
-    path_arr = body_status_path if controller_name == 'body_statuses' && action_name == 'show'
-    path_arr.include?(request_path)
-  end
 end
