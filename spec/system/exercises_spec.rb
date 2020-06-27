@@ -12,7 +12,7 @@ RSpec.describe 'トレーニング種目', type: :system do
       fill_in 'パスワード', with: login_user.password
       click_on 'ログイン'
       sleep 0.5
-      click_on '種目メニュー'
+      click_on '種目'
     end
 
     describe '一覧表示' do
