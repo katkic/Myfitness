@@ -17,9 +17,10 @@
         chart_values: @chart_values
       } %>
     <% else %>
-      <p class="text-center mt-4">データが存在しません</p>
+      <%= render 'partial/chart_no_data' %>
     <% end %>
   <% else %>
+    <% unless @chart_values.has_value?(0) %>
   <!-- トレーニングのグラフ -->
     <%= render 'partial/chart_workout', {
       range_title: @range_title,
@@ -27,6 +28,9 @@
       chart_records: @chart_records,
       chart_values: @chart_values
     } %>
+    <% else %>
+      <%= render 'partial/chart_no_data' %>
+    <% end %>
   <% end %>
 
   <!-- 表示期間のリンク -->

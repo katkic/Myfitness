@@ -34,11 +34,21 @@ class Workout < ApplicationRecord
   end
 
   scope :get_chart_min, -> (user, exercise_id, range, column) do
-    find_workout(user, exercise_id, range).pluck(column).min - 1
+    arr = find_workout(user, exercise_id, range).pluck(column)
+    unless arr.empty?
+      arr.min - 1
+    else
+      0
+    end
   end
 
   scope :get_chart_max, -> (user, exercise_id, range, column) do
-    find_workout(user, exercise_id, range).pluck(column).max + 1
+    arr = find_workout(user, exercise_id, range).pluck(column)
+    unless arr.empty?
+      arr.max + 1
+    else
+      0
+    end
   end
 
   private
