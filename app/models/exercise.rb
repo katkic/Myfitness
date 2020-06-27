@@ -29,10 +29,19 @@ class Exercise < ApplicationRecord
   scope :preset, -> { where(preset: true) }
   scope :original, -> (current_user) { where(preset: false).where(user_id: current_user.id) }
 
-  scope :exercise_search, -> (search_params) do
+  scope :exercise_search_preset, -> (search_params) do
     return if search_params.blank?
 
     where(preset: true)
+      .name_like(search_params[:name])
+      .part_is(search_params[:part])
+      .category_is(search_params[:category])
+  end
+
+  scope :exercise_search_original, -> (search_params) do
+    return if search_params.blank?
+
+    where(preset: false)
       .name_like(search_params[:name])
       .part_is(search_params[:part])
       .category_is(search_params[:category])
