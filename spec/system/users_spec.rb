@@ -131,7 +131,7 @@ RSpec.describe 'ユーザー機能', type: :system do
       before do
         @user_b = create(:user, name: 'ユーザーB', email: 'b@test.com')
         create(:profile, user: @user_b)
-        click_on 'ユーザー一覧'
+        click_on 'ユーザー'
       end
 
       it '他のユーザーが表示されていること' do

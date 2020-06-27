@@ -19,7 +19,7 @@ RSpec.describe 'ユーザーのフォロー機能', type: :system do
         let(:login_user) { user_a }
 
         before do
-          click_on 'ユーザー一覧'
+          click_on 'ユーザー'
           click_on 'フォローする'
           visit profile_path(user_a)
           click_on 'フォロー中'
@@ -34,7 +34,7 @@ RSpec.describe 'ユーザーのフォロー機能', type: :system do
         let(:login_user) { user_b }
 
         before do
-          click_on 'ユーザー一覧'
+          click_on 'ユーザー'
           click_on 'フォローする'
           visit profile_path(user_b)
           click_on 'フォロー中'
