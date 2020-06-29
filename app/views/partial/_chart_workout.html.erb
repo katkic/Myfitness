@@ -1,17 +1,17 @@
 <% if chart_records['max_weight'].present? %>
   <div class="mt-3">
     <h2>最大重量</h2>
-    <%= line_chart chart_records['max_weight'], curve: false, points: false, height: '280px', min: chart_values['max_weight_min'], max: chart_values['max_weight_max'] %>
+    <%= line_chart chart_records['max_weight'], curve: false, height: '280px', min: chart_values['max_weight_min'], max: chart_values['max_weight_max'] %>
   </div>
 
   <div class="mt-3">
     <h2>1RM</h2>
-    <%= line_chart chart_records['max_one_rm'], colors: ['#b00'], curve: false, points: false, height: '280px', min: chart_values['max_one_rm_min'], max: chart_values['max_one_rm_max'] %>
+    <%= line_chart chart_records['max_one_rm'], colors: ['#b00'], curve: false, height: '280px', min: chart_values['max_one_rm_min'], max: chart_values['max_one_rm_max'] %>
   </div>
 
   <div class="mt-3">
     <h2>合計重量</h2>
-    <%= line_chart chart_records['total_weight'], colors: ['#fa3'], curve: false, points: false, height: '280px', min: chart_values['total_weight_min'], max: chart_values['total_weight_max'] %>
+    <%= line_chart chart_records['total_weight'], colors: ['#fa3'], curve: false, height: '280px', min: chart_values['total_weight_min'], max: chart_values['total_weight_max'] %>
   </div>
 <% else %>
   <p>記録がありません</p>
